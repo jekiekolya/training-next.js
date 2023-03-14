@@ -1,16 +1,7 @@
-import { useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Link from "next/link";
 
-const usersApi = [
-  { id: 1, name: "John Doe" },
-  { id: 2, name: "Jane Ko" },
-  { id: 3, name: "Jek" },
-];
-
-export default function Users() {
-  const [users, setUsers] = useState(usersApi);
-
+export default function Users({ users }) {
   return (
     <div>
       <NavBar />
@@ -24,4 +15,15 @@ export default function Users() {
       </ul>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch(
+    "https://jsonplaceholder.typicode.com/users?_limit=10"
+  );
+
+  const users = await res.json();
+  return {
+    props: { users }, // will be passed to the page component as props
+  };
 }
