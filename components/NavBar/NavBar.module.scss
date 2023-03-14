@@ -1,10 +1,16 @@
 .navbar {
+  display: flex;
+  gap: 10px;
+
   background-color: #b6f172;
   padding: 10px;
 }
 
 .link {
   display: inline-block;
+
+  padding: 5px;
+
   color: rgb(0, 0, 0);
-  padding: 10px;
+  text-decoration: none;
 }
